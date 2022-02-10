@@ -1,10 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Weightlifting</title>
 </head>
+<style>
+    input {
+        width: 135px;
+    }
+</style>
 <body>
-$END$
+<h1>Weekly Format Sheet</h1>
+
+<!-- Create Form -->
+<div class="form-control">
+    <div class="two">
+        <button class="name" onclick="textBoxCreate()">Add Exercise</button>
+    </div>
+    <div id="three">
+    </div>
+
+    <!--    Added Exercises-->
+
+    <button type="submit" value="submit" onclick="return submit_weights();"> Submit</button>
+</div>
+
 </body>
+<script>
+    let date = new Date();
+    let current_date = date.toISOString().substring(0, 10);
+    // document.getElementById('weight_date').value = current_date;
+
+
+    //Array of Exercises
+    const array = ["Snatch", "CandJ", "Back Squat", "Front Squat"];
+
+    function submit_weights() {
+        // alert("Pressed");
+        let exercise_num = 0;
+        exercise_num= count ;
+        let string = "";
+        for (let i = 1; i < exercise_num; i++) {
+            let exercise = document.getElementById("Exercise_"+i);
+            let kg_exercise = document.getElementById("kg_"+i);
+            let reps = document.getElementById("reps_"+i);
+            let repstotal = document.getElementById("repstotal_"+i);
+            let wdate = document.getElementById("weight_date_"+i);
+
+            let line = exercise.value+ "," + kg_exercise.value + "," + reps.value + "," + repstotal.value + ","+ wdate.value +","
+
+            string = line + string
+        }
+        //javascript to excel
+        console.log(string)
+        return true;
+    }
+
+    let count = 1; // Global Variable for Name
+    let myParent = document.getElementById("three");
+
+    function textBoxCreate() {
+        if (count <= 10) {
+            //create Exercise
+            let label = document.createElement("label");
+            label.id = "Exercise";
+            label.innerHTML = "Exercise: " + count + " ";
+            myParent.appendChild(label)
+
+            //select
+            let dd = document.createElement("select");
+            dd.id = "Exercise_" + count;
+            myParent.appendChild(dd);
+            for (let i = 0; i < array.length; i++) {
+                const option = document.createElement("option");
+                option.value = array[i];
+                option.text = array[i];
+                dd.appendChild(option);
+            }
+
+            //Enter amount of Kg
+            let kg_input = document.createElement("input");
+            kg_input.id = "kg_" + count
+            myParent.appendChild(kg_input);
+            let kg_label = document.createElement("label");
+            kg_label.innerHTML = " KG ";
+            myParent.appendChild(kg_label);
+            //Enter amount of Reps
+            let reps_input = document.createElement("input");
+            reps_input.id = "reps_" + count
+            myParent.appendChild(reps_input);
+            let reps_label = document.createElement("label");
+            reps_label.innerHTML = " Reps";
+            myParent.appendChild(reps_label);
+
+            //Enter amount of Reps in Total
+            let repstotal_input = document.createElement("input");
+            repstotal_input.id = "repstotal_" + count
+            myParent.appendChild(repstotal_input);
+            let repstotal_label = document.createElement("label");
+            repstotal_label.innerHTML = " Reps in Total ";
+            myParent.appendChild(repstotal_label);
+
+            //Enter Date
+            let date_input = document.createElement("input")
+            date_input.type = "date";
+            date_input.id = "weight_date_" + count;
+            date_input.name = "weight_date_" + count;
+            myParent.appendChild(date_input)
+
+
+            let br = document.createElement("br");
+            myParent.appendChild(br);
+            count++;
+        } else {
+            alert("Can't have more than 10");
+        }
+    }
+</script>
 </html>

@@ -1,0 +1,25 @@
+{
+  "name": "weightsquestionaire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yegeun/weightsquestionaire.git"
+  },
+  "author": "Yegeun Ji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yegeun/weightsquestionaire/issues"
+  },
+  "homepage": "https://github.com/Yegeun/weightsquestionaire#readme",
+  "dependencies": {
+    "FileSaver": "^0.10.0",
+    "express": "^4.17.2",
+    "http-server": "^14.1.0",
+    "serverless-http": "^2.7.0"
+  }
+}
